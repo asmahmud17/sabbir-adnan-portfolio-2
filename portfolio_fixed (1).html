@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sabbir dnan Ã¢â‚¬â€ Portfolio</title>
+  <style>
+/* =====================================================
+   SBBIR DNN Ã¢â‚¬â€ CINEMTIC PURPLE THEME
+   FONTS: Bebas Neue (headings) | Inter (body/nav) | Montserrat (tagline)
+   ===================================================== */
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ FONT IMPORT Ã¢â€â‚¬Ã¢â€â‚¬ */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;600&display=swap');
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CSS VRIBLES Ã¢â€â‚¬Ã¢â€â‚¬ */
+:root {
+  --bg-deep:  #12011c;
+  --bg-dark:  #1a0128;
+  --accent:   #B51FF;
+
+  /* Font stacks */
+  --f-display: 'Bebas Neue', 'Impact', sans-serif;
+  --f-body:    'Inter', system-ui, sans-serif;
+  --f-accent:  'Montserrat', sans-serif;
+
+  --text:     #FFFFFF;
+  --text-sec: rgba(255,255,255,0.75);
+  --muted:    rgba(255,255,255,0.4);
+
+  --nav-h:    80px;
+  --ease:     cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ GLOBL RESET + SMOOTH FONT Ã¢â€â‚¬Ã¢â€â‚¬ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; cursor: none; overflow-x: hidden; }
+body { -webkit-overflow-scrolling: touch;
+  background: var(--bg-deep);
+  color: var(--text-sec);
+  font-family: var(--f-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.carousel-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; gap: 20px; padding: 20px 0; scrollbar-width: none; -ms-overflow-style: none; cursor: default; }
+.carousel-container::-webkit-scrollbar { display: none; }
+.gallery-card { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CUSTOM CURSOR Ã¢â€â‚¬Ã¢â€â‚¬ */
+.cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 10000; will-change: transform; }
+.cursor-outline { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(181,26,255,0.4); background: rgba(181,26,255,0.05); border-radius: 50%; pointer-events: none; z-index: 9999; will-change: transform; transition: width .3s, height .3s, background .3s, border-color .3s; }
+.cursor-hover .cursor-outline { width: 60px; height: 60px; background: rgba(181,26,255,0.15); border-color: var(--accent); }
+@media (pointer: coarse) { html, body, a, button { cursor: auto !important; } .cursor-dot, .cursor-outline { display: none !important; } }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ NOISE + PROTECTION + ORBS Ã¢â€â‚¬Ã¢â€â‚¬ */
+.noise-bg { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.035; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'); }
+img { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none; -webkit-user-drag: none; }
+video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.watermark-overlay { position: absolute; inset: 0; z-index: 5; pointer-events: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="10" y="30" fill="white" font-size="11" font-family="sans-serif" opacity="0.1">SBBIR DNN</text></svg>'); background-repeat: repeat; }
+.glow-orb { position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; opacity: 0.15; animation: orbDrift 20s ease-in-out infinite alternate; will-change: transform; }
+.glow-orb--1 { width: 800px; height: 800px; background: radial-gradient(circle,#6E049E,transparent 60%); top: -20%; left: -10%; }
+.glow-orb--2 { width: 600px; height: 600px; background: radial-gradient(circle,#304E8,transparent 60%); bottom: 10%; right: -10%; animation-delay: -5s; }
+@keyframes orbDrift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,30px) scale(1.1); } }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SECTIONS Ã¢â€â‚¬Ã¢â€â‚¬ */
+section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relative; z-index: 1; overflow: hidden; }
+.section-bg-1 { background: var(--bg-deep); }
+.section-bg-2 { background: var(--bg-dark); }
+.section-divider { width: 100%; height: 1px; background: linear-gradient(90deg,transparent,rgba(181,26,255,0.3),transparent); position: absolute; top: 0; left: 0; }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SECTION HEDINGS Ã¢â€â‚¬Ã¢â€â‚¬
+   ll main headings: Bebas Neue, large, white, tracked
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+.section-header { margin-bottom: 3rem; position: relative; display: inline-block; }
+.center-header { text-align: center; display: block; }
+.center-header .section-title { display: inline-block; }
+
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 400;        /* Bebas Neue has no real weight Ã¢â‚¬â€ 400 renders correctly */
+  letter-spacing: 0.05em;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Neon underline */
+. { position: absolute; bottom: 0; left: 0; height: 3px; background: var(--accent); width: 0; border-radius: 3px; box-shadow: 0 0 15px var(--accent); transition: width 1s var(--ease); }
+.section-title.visible . { width: 100%; }
+
+.section-subtitle {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-sec);
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ NIMTIONS Ã¢â€â‚¬Ã¢â€â‚¬ */
+.slide-in-left { opacity: 0; transform: translateX(-50px); transition: opacity 1s var(--ease), transform 1s var(--ease); will-change: transform,opacity; }
+.slide-in-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-up { opacity: 0; transform: translateY(50px); transition: opacity 1s var(--ease), transform 1s var(--ease); will-change: transform,opacity; }
+.reveal-up.visible { opacity: 1; transform: translateY(0); }
+.lando-entrance        { opacity: 0; transform: translateY(40px); animation: landoUp .6s ease-out forwards; will-change: transform,opacity; }
+.lando-entrance-delay  { opacity: 0; animation: landoUp .6s ease-out forwards .1s; will-change: opacity; }
+.lando-entrance-delay-2{ opacity: 0; transform: translateY(20px); animation: landoUp .8s ease-out forwards .2s; will-change: transform,opacity; }
+@keyframes landoUp { to { opacity:1; transform:translateY(0); } }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   NVIGTION
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+#navbar { position: fixed; inset: 0 0 auto 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem,5vw,6rem); height: var(--nav-h); transition: background .3s, backdrop-filter .3s; }
+#navbar.scrolled { background: rgba(18,1,28,0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(181,26,255,0.1); }
+
+/* Logo: Bebas Neue, 28px */
+.nav-logo { display: flex; align-items: center; z-index: 1002; pointer-events: auto; }
+#nav-logo-img { height: 40px; width: auto; object-fit: contain; pointer-events: none; }
+#nav-logo-txt {
+  font-family: var(--f-display);
+  font-size: 28px;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+/* Hamburger */
+.nav-toggle { display: none; flex-direction: column; gap: 6px; background: transparent; border: none; cursor: pointer; z-index: 1002; padding: 10px; pointer-events: auto; }
+.nav-toggle span { width: 28px; height: 2px; background: var(--text); transition: .3s transform, .3s opacity; transform-origin: left center; }
+.nav-toggle.open span:nth-child(1) { transform: rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg); }
+
+/* Nav links: Inter, 12px, 500, uppercase, wide */
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  padding: .5rem 0;
+  color: var(--text);
+  pointer-events: auto;
+}
+.nav-links a::after { content:''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0px; background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform .3s ease; }
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links { position: fixed; top: 0; right: 0; width: 100%; max-width: 300px; height: 100vh; background: rgba(18,1,28,0.98); backdrop-filter: blur(15px); flex-direction: column; align-items: flex-start; justify-content: center; padding: 2rem; gap: 2rem; transform: translateX(100%); transition: transform .4s var(--ease); border-left: 1px solid rgba(181,26,255,0.1); z-index: 1001; }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links a { font-size: 16px; padding: 1rem 0; width: 100%; display: block; }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   HERO
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+#hero { height: 100svh; display: flex; align-items: center; justify-content: center; padding: 0; }
+.hero-video-wrap, .hero-overlay { position: absolute; inset: 0; z-index: 0; }
+.hero-overlay { background: linear-gradient(to bottom, rgba(18,1,28,.5), rgba(18,1,28,.95)); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 0 1rem; width: 100%; }
+
+/* Name: Bebas Neue, giant, white */
+.hero-name {
+  font-family: var(--f-display);
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #fff;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero-divider { width: 80px; height: 1px; background: var(--accent); margin: 1.5rem auto; box-shadow: 0 0 15px var(--accent); }
+
+/* Tagline: Montserrat 300, tiny, very wide tracking, dimmed */
+.hero-tagline {
+  font-family: var(--f-accent);
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   BOUT
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+.about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(3rem,6vw,6rem); align-items: center; }
+.about-photo-wrap { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; border: 2px solid rgba(181,26,255,0.4); box-shadow: 0 0 40px rgba(139,0,199,0.25); max-width: 420px; }
+
+/* bout heading: Bebas Neue 48px Ã¢â‚¬â€ handled by .section-title override below */
+#about .section-title {
+  font-size: 48px;
+  letter-spacing: 0.03em;
+}
+
+/* Bio: Inter 16px, 400, line-height 1.8 */
+.about-bio {
+  font-family: var(--f-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  margin-top: 1.5rem;
+}
+.about-bio strong { color: #fff; font-weight: 600; }
+.about-bio em     { color: var(--accent); font-style: italic; }
+
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; text-align: center; } .about-photo-wrap { max-width: 320px; margin: 0 auto; } }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   CROUSEL
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+.gallery-section { padding-bottom: clamp(4rem,8vw,6rem); }
+.carousel-wrapper { position: relative; margin: 0 -1.5rem; padding: 1rem 1.5rem 3rem; }
+@media(min-width:768px){ .carousel-wrapper { margin: 0 -2rem; padding: 1rem 2rem 3rem; } }
+.carousel-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; gap: 20px; padding: 20px 0; scrollbar-width: none; -ms-overflow-style: none; cursor: default; }
+.carousel-container::-webkit-scrollbar { display: none; }
+.gallery-card { scroll-snap-align: start; flex-shrink: 0; }
+.carousel-container::-webkit-scrollbar { display: none; }
+
+.carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: rgba(18,1,28,.8); border: 1px solid rgba(181,26,255,.4); color: #fff; display: flex; align-items: center; justify-content: center; transition: all .3s; backdrop-filter: blur(5px); pointer-events: auto; }
+.carousel-arrow:hover { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 20px var(--accent); transform: translateY(-50%) scale(1.1); }
+.arrow-prev { left: .5rem; } .arrow-next { right: .5rem; }
+@media (max-width:768px){ .carousel-arrow { display: none !important; } }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CRDS Ã¢â€â‚¬Ã¢â€â‚¬ */
+.card-hover-fx { -webkit-transform: translateZ(0); transform: translateZ(0); will-change: transform; backface-visibility: hidden;  position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(181,26,255,.1); background: var(--bg-dark); transition: transform .4s ease, border-color .3s, box-shadow .3s, opacity .4s; flex: 0 0 auto; scroll-snap-align: start; opacity: .6; transform: scale(.9); will-change: transform,opacity; }
+.card-hover-fx:hover, .card-hover-fx.focused { opacity: 1; transform: scale(1) translateY(-6px); border-color: rgba(181,26,255,.5); box-shadow: 0 15px 35px rgba(139,0,199,.25); }
+.video-card  { width: clamp(280px,75vw,650px); aspect-ratio: 16/10; }
+.design-card { width: clamp(240px,60vw,450px); aspect-ratio: 4/5; }
+.card-thumb  { position: absolute; inset: 0; transition: transform .5s ease; will-change: transform; }
+.card-hover-fx:hover .card-thumb, .card-hover-fx.focused:hover .card-thumb { transform: scale(1.05); }
+.card-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(18,1,28,.95) 0%,transparent 60%); z-index: 2; pointer-events: none; }
+
+/* Category badge: Inter 10px, 600, wide uppercase */
+.neon-glow {
+  position: absolute; top: 1rem; left: 1rem; z-index: 6;
+  background: rgba(18,1,28,.7); backdrop-filter: blur(8px);
+  padding: .3rem 1rem; border-radius: 30px; border: 1px solid var(--accent);
+  font-family: var(--f-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  box-shadow: 0 0 10px rgba(181,26,255,.4);
+  transition: background .3s, box-shadow .3s, color .3s;
+  pointer-events: auto;
+}
+.neon-glow:hover { background: var(--accent); color: #fff; box-shadow: 0 0 20px var(--accent); }
+@media(min-width:768px){ .neon-glow { top:1.5rem; left:1.5rem; font-size: 10px; padding:.35rem 1.2rem; } }
+
+/* Card play button */
+.card-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(.8); width: 60px; height: 60px; background: rgba(181,26,255,.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 6; opacity: 0; transition: transform .3s, opacity .3s; box-shadow: 0 0 20px var(--accent); color: #fff; pointer-events: auto; }
+.card-play-btn svg { width: 26px; height: 26px; margin-left: 4px; }
+.card-hover-fx:hover .card-play-btn { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+
+/* Design card overlay */
+.design-card-overlay { position: absolute; inset: 0; background: rgba(18,1,28,.78); z-index: 4; opacity: 0; transition: opacity .3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+a.design-card-overlay { text-decoration: none; pointer-events: auto; }
+.card-hover-fx:hover .design-card-overlay { opacity: 1; }
+/* Overlay title: Inter 15px 600 */
+.design-card-overlay h3 {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  transform: translateY(10px);
+  transition: transform .3s;
+  margin-bottom: .35rem;
+}
+/* Overlay subtitle: Inter 13px 400 */
+.design-card-overlay p {
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  transform: translateY(10px);
+  transition: transform .3s .05s;
+  line-height: 1.4;
+}
+.card-hover-fx:hover .design-card-overlay h3,
+.card-hover-fx:hover .design-card-overlay p { transform: translateY(0); }
+
+/* Card bottom text (video cards) */
+.card-content-bottom { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; z-index: 4; pointer-events: none; }
+/* Project title: Inter 15px 600 */
+.card-bottom-title {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+/* Project subtitle: Inter 13px 400 */
+.card-bottom-desc {
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CT Buttons: Inter 12px 600 wide */
+.cta-wrap { text-align: center; margin-top: 2.5rem; }
+.neon-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(181,26,255,.12); border: 1px solid var(--accent);
+  color: #fff;
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 1rem 2.2rem; border-radius: 30px;
+  transition: all .3s; box-shadow: 0 0 15px rgba(181,26,255,.25); pointer-events: auto;
+}
+.neon-btn:hover { background: var(--accent); box-shadow: 0 0 30px var(--accent); transform: translateY(-3px); }
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   SERVICES (2 cards)
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* Heading handled by .section-title (Bebas Neue, no custom-font override needed) */
+.services-grid.services-2-col { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; max-width: 820px; margin: 0 auto; }
+@media (max-width:768px) { .services-grid.services-2-col { grid-template-columns: 1fr; } }
+
+.service-card { background: rgba(26,1,40,.5); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(181,26,255,.1); transition: transform .3s, background .3s, border-color .3s; will-change: transform; text-align: center; }
+.service-card:hover { background: rgba(58,1,85,.55); border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 10px 25px rgba(139,0,199,.15); }
+.service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+/* Service name: Inter 16px 600 */
+.service-name {
+  font-family: var(--f-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .8rem;
+}
+/* Service desc: Inter 14px 400 */
+.service-desc {
+  font-family: var(--f-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   SKILL PROOF GRID
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+.skill-proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+@media (max-width:1024px){ .skill-proof-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:600px) { .skill-proof-grid { grid-template-columns: 1fr; } }
+
+.proof-card { display: flex; flex-direction: column; background: rgba(26,1,40,.6); border: 1px solid rgba(181,26,255,.1); border-radius: 16px; padding: 1.8rem; transition: all .3s; pointer-events: auto; text-decoration: none; }
+a.proof-card:hover { border-color: var(--accent); background: rgba(58,1,85,.5); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(139,0,199,.2); }
+.proof-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+.proof-icon { width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.proof-icon svg { width: 24px; height: 24px; }
+.yt-icon { background: rgba(255,0,0,.15); color: #ff0000; }
+.be-icon { background: rgba(0,87,255,.15); color: #0057ff; }
+.fb-icon { background: rgba(24,119,242,.15); color: #1877f2; }
+.gd-icon { background: rgba(255,186,0,.15); color: #ffba00; }
+.tg-icon { background: rgba(0,136,204,.15); color: #0088cc; }
+
+/* Badge: Inter 10px 700 */
+.proof-badge { font-family: var(--f-body); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: .3rem .8rem; border-radius: 20px; }
+.proof-badge.linked   { background: rgba(0,255,100,.1); color: #00ff64; border: 1px solid rgba(0,255,100,.3); box-shadow: 0 0 10px rgba(0,255,100,.2); }
+.proof-badge.unlinked { background: rgba(255,255,255,.05); color: #999; border: 1px solid rgba(255,255,255,.1); }
+
+/* Card title: Inter 17px 600 */
+.proof-title {
+  font-family: var(--f-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+/* Card subtitle: Inter 11px 500, uppercase, accent */
+.proof-subtitle {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: .8rem;
+}
+/* Card desc: Inter 13px 400 */
+.proof-desc {
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   CONTCT CRDS
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+.contact-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+@media (max-width:900px) { .contact-cards { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:500px) { .contact-cards { grid-template-columns: 1fr; } }
+
+.contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; padding: 2.5rem 1.5rem; border-radius: 20px; background: rgba(26,1,40,.55); border: 1px solid rgba(181,26,255,.1); transition: transform .35s var(--ease), background .3s, border-color .3s, box-shadow .3s; text-decoration: none; will-change: transform; pointer-events: auto; }
+.contact-card:hover { background: rgba(58,1,85,.5); border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(181,26,255,.3); }
+.contact-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+.contact-icon svg { width: 30px; height: 30px; }
+.cc-email .contact-icon { background: rgba(181,26,255,.15); color: var(--accent); }
+.cc-ig    .contact-icon { background: linear-gradient(135deg,rgba(253,88,0,.2),rgba(213,0,139,.2)); color: #e1306c; }
+.cc-fb    .contact-icon { background: rgba(24,119,242,.15); color: #1877f2; }
+.cc-wa    .contact-icon { background: rgba(37,211,102,.15); color: #25d366; }
+.cc-tg    .contact-icon { background: rgba(0,136,204,.15); color: #0088cc; }
+
+/* Contact name: Inter 11px 600 uppercase */
+.contact-name {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+/* Contact hint: Inter 12px 400 */
+.contact-hint {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   FOOTER
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+#footer { padding: 3rem 1.5rem; text-align: center; border-top: 1px solid rgba(181,26,255,.1); background: var(--bg-deep); }
+/* Copyright: Inter 12px 400 */
+.footer-copy {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ REDUCED MOTION Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+@media (max-width: 768px) { * { animation-duration: 0.1ms !important; transition-duration: 0.3s !important; } }
+
+/* Remove LL underlines */
+a, a:hover, a:visited, a:active,
+.nav-links a, .nav-links a:hover,
+.neon-btn, .neon-btn:hover {
+  text-decoration: none !important;
+}
+
+/* Logo glow */
+#nav-logo-img { 
+  filter: drop-shadow(0 0 8px rgba(181,26,255,0.6)); 
+  transition: filter 0.3s; 
+}
+#nav-logo-img:hover { 
+  filter: drop-shadow(0 0 16px rgba(181,26,255,1)); 
+}
+
+/* CV Buttons inside bout */
+.cv-resume-wrap {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cv-resume-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.25rem;
+}
+
+.cv-btns-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) { 
+  .cv-btns-row { justify-content: center; } 
+}
+
+.cv-btn-view {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent); color: #fff !important;
+  font-family: var(--f-body); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.75rem 1.75rem; border-radius: 30px;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(181,26,255,0.4);
+  text-decoration: none !important;
+}
+.cv-btn-view:hover { 
+  background: #9b00e0; 
+  box-shadow: 0 0 30px rgba(181,26,255,0.7); 
+  transform: translateY(-2px); 
+}
+
+.cv-btn-download {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: #fff !important;
+  font-family: var(--f-body); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.75rem 1.75rem; border-radius: 30px;
+  border: 1px solid rgba(181,26,255,0.5);
+  transition: all 0.3s;
+  text-decoration: none !important;
+}
+.cv-btn-download:hover { 
+  border-color: var(--accent); 
+  background: rgba(181,26,255,0.1); 
+  box-shadow: 0 0 15px rgba(181,26,255,0.3);
+  transform: translateY(-2px); 
+}
+
+/* CV card inside Skill Proof */
+.cv-proof-card {
+  background: rgba(26,1,40,0.6);
+  border: 1px solid rgba(181,26,255,0.25);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  flex-wrap: wrap;
+}
+.cv-proof-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(181,26,255,0.15);
+}
+.cv-proof-left {
+  display: flex; align-items: center; gap: 1rem;
+}
+.cv-proof-icon {
+  width: 48px; height: 48px;
+  background: rgba(181,26,255,0.15);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+.cv-proof-title {
+  font-family: var(--f-body);
+  font-size: 16px; font-weight: 600; color: #fff;
+  margin-bottom: 0.2rem;
+}
+.cv-proof-sub {
+  font-family: var(--f-body);
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.cv-proof-btns {
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+}
+
+        a { text-decoration: none !important; }
+        .nav-link::after { display: none !important; border: none !important; background: none !important; }
+        .::after { display: none !important; }
+        .neon-btn:hover { text-decoration: none !important; }
+        
+
+        a, .nav-link, .neon-btn { text-decoration: none !important; border: none !important; }
+        .nav-link::after { display: none !important; }
+        
+
+/* Minimal fixes: remove link underlines without changing layout/design */
+.nav-links a,
+.nav-links a:hover,
+.nav-links a:visited,
+.nav-links a:active,
+.neon-btn,
+.neon-btn:hover,
+.neon-btn:visited,
+.neon-btn:active,
+.cv-btn-view,
+.cv-btn-download {
+  text-decoration: none !important;
+}
+.nav-links a::after,
+.nav-links a:hover::after {
+  display: none !important;
+  width: 0 !important;
+  transform: none !important;
+}
+.neon-btn svg,
+.neon-btn span {
+  text-decoration: none !important;
+}
+
+  
+.service-icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-outline" aria-hidden="true"></div>
+
+  <!-- NOISE TEXTURE OVERLY -->
+  <div class="noise-bg" aria-hidden="true"></div>
+
+  <!-- MBIENT GLOW ORBS -->
+  <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â NV Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <nav id="navbar">
+    <!-- Logo: image with S text fallback -->
+    <a href="#hero" class="nav-logo" id="nav-logo-link">
+      <img id="nav-logo-img" src="assets/images/logo.png" alt="Sabbir dnan" height="40"
+           onerror="this.style.display='none'; document.getElementById('nav-logo-txt').style.display='block'"/>
+      <span id="nav-logo-txt" style="display:none">S</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">bout</a></li>
+      <li><a href="#video-section">Video</a></li>
+      <li><a href="#design-section">Design</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skill-proof">Channels</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â HERO Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+  <source src="assets/videos/hero-reel.mp4" type="video/mp4">
+</video>
+<div style="position:absolute; inset:0; background:rgba(0,0,0,0.15); z-index:0;"></div>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content" style="position: relative; z-index: 1;">
+      <h1 class="hero-name lando-entrance">SBBIR DNN</h1>
+      <div class="hero-divider lando-entrance-delay"></div>
+      <p class="hero-tagline lando-entrance-delay-2">TELLING STORIES THROUGH EVERY FRME</p>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â BOUT Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="about" class="section-bg-2">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal-up">
+        <img src="assets/images/about-photo.jpg" alt="Sabbir dnan" class="about-photo" loading="lazy"/>
+        <div class="watermark-overlay"></div>
+      </div>
+      <div class="about-text reveal-up">
+        <h2 class="section-title">bout Me<span class=""></span></h2>
+        <!-- EDIT BIO TEXT IN config.js Ã¢â€ â€™ bio field -->
+        <p class="about-bio" id="about-bio">Hi, I'm <strong>Sabbir dnan</strong>, a Professional Video Editor and Graphic Designer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â VIDEO EDITING Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="video-section" class="gallery-section section-bg-1">
+    <div class="section-header">
+      <h2 class="section-title slide-in-left">VIDEO EDITING
+        <span class=""></span>
+      </h2>
+    </div>
+    <div class="carousel-wrapper reveal-up">
+      <button class="carousel-arrow arrow-prev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-arrow arrow-next" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-container" id="video-carousel"></div>
+    </div>
+    <div class="cta-wrap reveal-up">
+      <a href="https://youtube.com/@sabbiradnan-ym7xw" target="_blank" rel="noopener" class="neon-btn" style="text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:8px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        WTCH MY WORK ON YOUTUBE
+      </a>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â GRPHIC DESIGN Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="design-section" class="gallery-section section-bg-2">
+    <div class="section-divider"></div>
+    <div class="section-header">
+      <h2 class="section-title slide-in-left">GRPHIC DESIGN
+        <span class=""></span>
+      </h2>
+    </div>
+    <div class="carousel-wrapper reveal-up">
+      <button class="carousel-arrow arrow-prev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-arrow arrow-next" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-container" id="design-carousel"></div>
+    </div>
+    <div class="cta-wrap reveal-up">
+      <a href="https://www.behance.net/sabbiradnan96" target="_blank" rel="noopener" class="neon-btn" style="text-decoration:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:8px;"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3 0-3h-3.584v3zm3.358 6c2.877 0 3.017-3.518 0-3.518h-3.358v3.518h3.358z"/></svg>
+        VIEW MY DESIGN ON BEHNCE
+      </a>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â SERVICES (2 only) Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="services" class="section-bg-1">
+    <div class="section-header">
+      <h2 class="section-title slide-in-left">What I Offer
+        <span class=""></span>
+      </h2>
+    </div>
+    <div class="services-wrapper reveal-up">
+      <div class="services-grid services-2-col">
+        <div class="service-card">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div>
+          <h3 class="service-name">Video Editing</h3>
+          <p class="service-desc">From raw footage to cinematic sequences Ã¢â‚¬â€ motion, storytelling, reels and more.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h1.2a2 2 0 0 0 1.4-3.4l-.6-.6a2 2 0 0 1 1.4-3.4H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z"/><circle cx="7.5" cy="10" r=".8" fill="currentColor"/><circle cx="10" cy="7.5" r=".8" fill="currentColor"/><circle cx="14" cy="7.5" r=".8" fill="currentColor"/></svg></div>
+          <h3 class="service-name">Graphic Design</h3>
+          <p class="service-desc">Posters, thumbnails, calligraphy and social media visuals that stand out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â SKILL PROOF Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="skill-proof" class="section-bg-2">
+    <div class="section-header center-header">
+      <h2 class="section-title slide-in-left">Skill Proof & Channel Links
+        <span class=""></span>
+      </h2>
+      <p class="section-subtitle">Live channels, portfolio hubs, and drive folders showcasing video cuts, graphic files, and creative updates.</p>
+    </div>
+    <!-- Populated by JS from config.skillLinks -->
+    <div class="skill-proof-grid reveal-up" id="skill-grid"></div>
+    <!-- CV Card in Skill Proof -->
+    <div class="cv-proof-card reveal-up" style="margin-top: 2rem;">
+      <div class="cv-proof-left">
+        <div class="cv-proof-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div>
+          <p class="cv-proof-title">Resume / CV</p>
+          <p class="cv-proof-sub">PDF Document</p>
+        </div>
+      </div>
+      <div class="cv-proof-btns">
+        <a href="assets/cv/sabbir-adnan-cv.pdf" target="_blank" rel="noopener" class="cv-btn-view">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          View
+        </a>
+        <a href="assets/cv/sabbir-adnan-cv.pdf" download="Sabbir-dnan-CV.pdf" class="cv-btn-download">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â CONTCT Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <section id="contact" class="section-bg-1">
+    <div class="contact-glow" aria-hidden="true"></div>
+    <div class="section-header center-header">
+      <h2 class="section-title contact-heading slide-in-left">Get In Touch
+        <span class=""></span>
+      </h2>
+      <p class="section-subtitle reveal-up">Open to projects, collaborations and creative opportunities.</p>
+    </div>
+    <!-- Populated by JS from config.contactLinks -->
+    <div class="contact-cards reveal-up" id="contact-grid"></div>
+  </section>
+
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â FOOTER Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; <span id="year"></span> Sabbir dnan. ll rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+// =====================================================================
+// SBBIR DNN ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â PORTFOLIO CONFIGURTION
+// Edit all site content here. No need to touch index.html or main.js
+// =====================================================================
+
+const PORTFOLIO_CONFIG = {
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ PERSONL ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    name:       "Sabbir dnan",
+    tagline:    "Telling Stories Through Every Frame",
+    logoPath:   "assets/images/logo.png",   // ÃƒÂ¢Ã¢â‚¬Â Ã‚Â swap logo image here
+    photoPath:  "assets/images/about-photo.jpg", // ÃƒÂ¢Ã¢â‚¬Â Ã‚Â swap photo here
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ BIO ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    // Edit the bio text freely between the quotes
+    bio: `Hi, I'm <strong>Sabbir dnan</strong>, a Professional Video Editor and Graphic Designer with <strong>1 year of experience</strong> in the creative field. I enjoy transforming ordinary footage into engaging, dynamic, and visually appealing videos that effectively connect with the audience.
+<br/><br/>
+I specialize in creating <strong>Social Media Videos, Reels, Promotional Videos, Talking Head Content, and Storytelling Videos</strong>. I also use my graphic design skills to enhance the visuals, typography, and overall presentation of my videos.
+<br/><br/>
+<em>With creativity, a passion for learning, and a commitment to quality, I strive to bring every project to life in a unique and engaging way.</em>`,
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ COLORS & FONTS ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    accentColor:  "#B51FF",
+    fontHeadings: "'Montserrat', sans-serif",
+    fontBody:     "'Inter', sans-serif",
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ VIDEO EDITING CROUSEL ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    // Categories allowed: Motion | Storytelling | Podcast | Social Content | Reels
+    videoProjects: [
+        {
+            category:  "Motion",
+            thumbnail: "assets/images/proj-1.jpg",
+            url:       "https://youtube.com/playlist?list=PLCbN6Yaq5FOM&si=ezBjiJqeeyTOjyYs",
+            title:     "Motion Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Storytelling",
+            thumbnail: "assets/images/proj-2.jpg",
+            url:       "https://youtube.com/playlist?list=PLRqr_WiPbrmY&si=3r6ZGQ4enxrU9vvj",
+            title:     "Storytelling Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Podcast",
+            thumbnail: "assets/images/proj-3.jpg",
+            url:       "https://youtube.com/playlist?list=PLFtPV0z3edUw&si=_y6sKsXPBR0EXm3q",
+            title:     "Podcast Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Social Content",
+            thumbnail: "assets/images/proj-4.jpg",
+            url:       "https://youtube.com/your-link-here",
+            title:     "Social Content Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Reels",
+            thumbnail: "assets/images/proj-5.jpg",
+            url:       "https://youtube.com/playlist?list=PLdmGpNZyw04s&si=qrBJIZtS3I6kOPOQ",
+            title:     "Reels Project Title",
+            subtitle:  "Short description here"
+        }
+    ],
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ GRPHIC DESIGN CROUSEL ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    // Categories allowed: Poster | Calligraphy | Thumbnail | Social Media
+    designProjects: [
+        {
+            category:  "Poster",
+            thumbnail: "assets/images/proj-1.jpg",
+            url:       "https://www.behance.net/gallery/224277165/Portfolio-part-1",
+            title:     "Poster Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Calligraphy",
+            thumbnail: "assets/images/proj-2.jpg",
+            url:       "https://www.behance.net/gallery/220403237/book-cover-design",
+            title:     "Calligraphy Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Thumbnail",
+            thumbnail: "assets/images/proj-3.jpg",
+            url:       "https://www.behance.net/gallery/254889965/Thumnell-Design",
+            title:     "Thumbnail Project Title",
+            subtitle:  "Short description here"
+        },
+        {
+            category:  "Social Media",
+            thumbnail: "assets/images/proj-4.jpg",
+            url:       "https://www.behance.net/gallery/254106451/Marketing-d-Design",
+            title:     "Social Media Project Title",
+            subtitle:  "Short description here"
+        }
+    ],
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ SKILL PROOF LINKS ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    skillLinks: [
+        {
+            platform: "YouTube",
+            subtitle:  "Video Editing Proof",
+            desc:      "Video editing projects, visual cuts, sequence pacing, and video tutorials.",
+            // DD GOOGLE DRIVE LINK HERE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â change url from "#" to your link
+            url:       "https://youtube.com/@sabbiradnan-ym7xw",
+            linked:    true,
+            icon:      "yt"
+        },
+        {
+            platform: "Behance",
+            subtitle:  "Graphic Design Showcase",
+            desc:      "Graphic design showcase, poster layouts, visual branding, and social posts.",
+            url:       "https://www.behance.net/sabbiradnan96",
+            linked:    true,
+            icon:      "be"
+        },
+        {
+            platform: "Facebook",
+            subtitle:  "Social Community",
+            desc:      "Creative project updates, social media posts, design previews, and outreach.",
+            url:       "https://www.facebook.com/sabbiradnan390",
+            linked:    true,
+            icon:      "fb"
+        },
+        {
+            platform: "Google Drive",
+            subtitle:  "Source Files & Vault",
+            desc:      "Direct link to raw video render samples, PSD/I design sources, work archives.",
+            // DD GOOGLE DRIVE LINK HERE ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“
+            url:       "https://drive.google.com/drive/folders/1vd-D6bXq5uHa2B6Qitih_k1wTD-a9QVS?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto",
+            linked:    true,
+            icon:      "gd"
+        },
+        {
+            platform: "Telegram",
+            subtitle:  "Channel & Resources",
+            desc:      "nnouncements, creative asset shares, video editing packs, and updates.",
+            url:       "https://t.me/Sabbir_7396",
+            linked:    true,
+            icon:      "tg"
+        }
+    ],
+
+    // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ CONTCT LINKS ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+    contactLinks: [
+        { label: "Email",     hint: "Drop me an email",    url: "mailto:sabbiradnan@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Sabbir%20dnan&body=Hi%20Sabbir%2C%20I%27d%20like%20to%20work%20with%20you.", icon: "email" },
+        { label: "Instagram", hint: "Follow my journey",   url: "https://www.instagram.com/sabbiradnan39120/?hl=en", icon: "ig" },
+        { label: "Facebook",  hint: "Connect with me",     url: "https://www.facebook.com/sabbiradnan390", icon: "fb" },
+        { label: "Whatspp",  hint: "Chat directly",       url: "https://wa.me/8801607310024",            icon: "wa" },
+        { label: "Telegram",  hint: "Join my channel",     url: "https://t.me/Sabbir_7396",              icon: "tg" }
+    ]
+};
+
+window.PORTFOLIO_CONFIG = PORTFOLIO_CONFIG;
+
+</script>
+  <script>
+// =====================================================================
+// MIN.JS Ã¢â‚¬â€ Sabbir dnan Portfolio (fully config-driven)
+// =====================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const C = window.PORTFOLIO_CONFIG;
+    if (!C) return;
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ CSS Vars Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    document.documentElement.style.setProperty('--accent', C.accentColor);
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Hero Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const qS = (s) => document.querySelector(s);
+    if (qS('.hero-name'))    qS('.hero-name').textContent    = C.name;
+    if (qS('.hero-tagline')) qS('.hero-tagline').textContent = C.tagline;
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Bio Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const bioEl = document.getElementById('about-bio');
+    if (bioEl && C.bio) bioEl.innerHTML = C.bio;
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Protection Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    document.addEventListener('contextmenu', e => {
+        if (['IMG','VIDEO'].includes(e.target.tagName)) e.preventDefault();
+    });
+    document.addEventListener('dragstart', e => {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Mobile Nav Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const navToggle = qS('.nav-toggle');
+    const navLinks  = qS('.nav-links');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Custom Cursor (mouse devices only) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const dot     = qS('.cursor-dot');
+    const outline = qS('.cursor-outline');
+    if (dot && outline && window.matchMedia('(pointer:fine)').matches) {
+        let mx = innerWidth/2, my = innerHeight/2, ox = mx, oy = my;
+        window.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = `translate(${mx}px,${my}px)`;
+        }, {passive: true});
+        document.querySelectorll('a,button,.carousel-container').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'), {passive:true});
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'), {passive:true});
+        });
+        (function tick() {
+            ox += (mx - ox) * 0.25;
+            oy += (my - oy) * 0.25;
+            outline.style.transform = `translate(${ox}px,${oy}px)`;
+            requestnimationFrame(tick);
+        })();
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Icon SVG helpers Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const SVGS = {
+        yt:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 229 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/></svg>`,
+        be:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>`,
+        fb:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>`,
+        gd:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5M9.73 3.5h13.12l-3.43 6H6.3M22.85 15l-3.43-6-6.56 11.5h13.13"/></svg>`,
+        tg:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.288-4.12 7.48-6.76c.324-.29-.074-.452-.505-.162L7.87 12.18l-3.98-1.25c-.868-.27-.887-.87.18-1.29l15.584-6c.72-.27 1.35.15 1.144 1.25z"/></svg>`,
+        email:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+        ig:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.374 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+        wa:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`
+    };
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Video Carousel Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const videoCarousel = document.getElementById('video-carousel');
+    if (videoCarousel && C.videoProjects) {
+        C.videoProjects.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card video-card card-hover-fx';
+            card.innerHTML = `
+                <span class="neon-glow">${p.category}</span>
+                <img src="${p.thumbnail}" alt="${p.title}" loading="lazy" class="card-thumb"/>
+                <div class="watermark-overlay"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content-bottom">
+                    <h3 class="card-bottom-title">${p.title}</h3>
+                    <p class="card-bottom-desc">${p.subtitle}</p>
+                </div>`;
+            // Clicking card Ã¢â€ â€™ opens URL
+            card.addEventListener('click', () => window.open(p.url, '_blank', 'noopener'));
+            card.style.cursor = 'pointer';
+            videoCarousel.appendChild(card);
+        });
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Design Carousel Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const designCarousel = document.getElementById('design-carousel');
+    if (designCarousel && C.designProjects) {
+        C.designProjects.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card design-card card-hover-fx';
+            card.innerHTML = `
+                <span class="neon-glow">${p.category}</span>
+                <img src="${p.thumbnail}" alt="${p.title}" loading="lazy" class="card-thumb"/>
+                <div class="watermark-overlay"></div>
+                <div class="design-card-overlay">
+                    <h3>${p.title}</h3>
+                    <p>${p.subtitle}</p>
+                </div>`;
+            card.addEventListener('click', () => window.open(p.url, '_blank', 'noopener'));
+            card.style.cursor = 'pointer';
+            designCarousel.appendChild(card);
+        });
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Skill Proof Grid Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const skillGrid = document.getElementById('skill-grid');
+    if (skillGrid && C.skillLinks) {
+        C.skillLinks.forEach(s => {
+            const tag  = s.linked ? 'a' : 'div';
+            const el   = document.createElement(tag);
+            el.className = 'proof-card';
+            if (s.linked && s.url) { el.href = s.url; el.target = '_blank'; el.rel = 'noopener'; }
+            el.innerHTML = `
+                <div class="proof-header">
+                    <div class="proof-icon ${s.icon}-icon">${SVGS[s.icon] || ''}</div>
+                    <span class="proof-badge ${s.linked ? 'linked' : 'unlinked'}">${s.linked ? 'LINKED' : 'UNLINKED'}</span>
+                </div>
+                <h3 class="proof-title">${s.platform}</h3>
+                <p class="proof-subtitle">${s.subtitle}</p>
+                <p class="proof-desc">${s.desc}</p>`;
+            skillGrid.appendChild(el);
+        });
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Contact Cards Grid Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const contactGrid = document.getElementById('contact-grid');
+    if (contactGrid && C.contactLinks) {
+        C.contactLinks.forEach(c => {
+            const el = document.createElement('a');
+            el.className = `contact-card cc-${c.icon}`;
+            el.href = c.url;
+            el.target = '_blank';
+            el.rel = 'noopener';
+            if (c.url.startsWith('mailto:')) el.removettribute('target');
+            el.innerHTML = `
+                <div class="contact-icon">${SVGS[c.icon] || ''}</div>
+                <span class="contact-name">${c.label}</span>
+                <span class="contact-hint">${c.hint}</span>`;
+            contactGrid.appendChild(el);
+        });
+    }
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Carousel (Drag + Touch + Momentum + Center Focus) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    function initCarousel(wrapper) {
+        const container = wrapper.querySelector('.carousel-container');
+        if (!container) return;
+        const cards  = container.querySelectorll('.gallery-card');
+        const prevBtn = wrapper.querySelector('.arrow-prev');
+        const nextBtn = wrapper.querySelector('.arrow-next');
+        let isDown = false, startX = 0, scrollLeft = 0, velX = 0, mid;
+
+        // Hint nudge on load
+        setTimeout(() => {
+            container.scrollBy({left:120,behavior:'smooth'});
+            setTimeout(() => container.scrollBy({left:-120,behavior:'smooth'}), 700);
+        }, 1600);
+
+        const amt = () => window.innerWidth > 768 ? 620 : 320;
+        if (prevBtn) prevBtn.addEventListener('click', () => container.scrollBy({left:-amt(),behavior:'smooth'}));
+        if (nextBtn) nextBtn.addEventListener('click', () => container.scrollBy({left:amt(),behavior:'smooth'}));
+
+        function focus() {
+            const cc = container.getBoundingClientRect().left + container.offsetWidth / 2;
+            let best = null, minD = Infinity;
+            cards.forEach(c => {
+                const r = c.getBoundingClientRect();
+                const d = Math.abs(r.left + r.width / 2 - cc);
+                c.classList.remove('focused');
+                if (d < minD) { minD = d; best = c; }
+            });
+            if (best) best.classList.add('focused');
+        }
+
+        let ft;
+        container.addEventListener('scroll', () => { clearTimeout(ft); ft = setTimeout(focus, 60); }, {passive:true});
+        setTimeout(focus, 600);
+
+        // Desktop mouse wheel to horizontal scroll translation
+        container.addEventListener('wheel', e => {
+            if (e.deltaY && Math.abs(e.deltaX) < 10) { 
+                e.preventDefault(); 
+                container.scrollLeft += e.deltaY * 1.5; 
+            }
+        }, {passive: false});
+
+        // Native CSS scroll is used instead of JS dragging
+        function momentum() {
+            container.scrollLeft += velX;
+            velX *= 0.92;
+            focus();
+            if (Math.abs(velX) > 0.5) mid = requestnimationFrame(momentum);
+        }
+    }
+    document.querySelectorll('.carousel-wrapper').forEach(initCarousel);
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Nav scroll effect Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const navbar = document.getElementById('navbar');
+    if (navbar) window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 30), {passive:true});
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ IntersectionObserver for all animations Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, {threshold: 0.15});
+    document.querySelectorll('.reveal-up,.slide-in-left').forEach(el => io.observe(el));
+
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Footer year Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    const yr = document.getElementById('year');
+    if (yr) yr.textContent = new Date().getFullYear();
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
