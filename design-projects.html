@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sabbir Adnan â€” Portfolio</title>
+  <title>Sabbir Adnan — Portfolio</title>
   <style>
 /* =====================================================
-   SABBIR ADNAN â€” CINEMATIC PURPLE THEME
+   SABBIR ADNAN — CINEMATIC PURPLE THEME
    FONTS: Bebas Neue (headings) | Inter (body/nav) | Montserrat (tagline)
    ===================================================== */
 
-/* â”€â”€ FONT IMPORT â”€â”€ */
+/* ── FONT IMPORT ── */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;600&display=swap');
 
-/* â”€â”€ CSS VARIABLES â”€â”€ */
+/* ── CSS VARIABLES ── */
 :root {
   --bg-deep:  #12011c;
   --bg-dark:  #1a0128;
@@ -32,10 +32,10 @@
   --ease:     cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* â”€â”€ GLOBAL RESET + SMOOTH FONT â”€â”€ */
+/* ── GLOBAL RESET + SMOOTH FONT ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; cursor: none; overflow-x: hidden; }
-body { -webkit-overflow-scrolling: touch;
+body {
   background: var(--bg-deep);
   color: var(--text-sec);
   font-family: var(--f-body);
@@ -47,17 +47,15 @@ body { -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-a, button, .carousel-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; gap: 20px; padding: 20px 0; scrollbar-width: none; -ms-overflow-style: none; cursor: default; }
-.carousel-container::-webkit-scrollbar { display: none; }
-.gallery-card { scroll-snap-align: start; flex-shrink: 0; }
+a, button, .carousel-container { cursor: none !important; }
 
-/* â”€â”€ CUSTOM CURSOR â”€â”€ */
+/* ── CUSTOM CURSOR ── */
 .cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 10000; will-change: transform; }
 .cursor-outline { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(181,26,255,0.4); background: rgba(181,26,255,0.05); border-radius: 50%; pointer-events: none; z-index: 9999; will-change: transform; transition: width .3s, height .3s, background .3s, border-color .3s; }
 .cursor-hover .cursor-outline { width: 60px; height: 60px; background: rgba(181,26,255,0.15); border-color: var(--accent); }
 @media (pointer: coarse) { html, body, a, button { cursor: auto !important; } .cursor-dot, .cursor-outline { display: none !important; } }
 
-/* â”€â”€ NOISE + PROTECTION + ORBS â”€â”€ */
+/* ── NOISE + PROTECTION + ORBS ── */
 .noise-bg { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.035; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'); }
 img { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none; -webkit-user-drag: none; }
 video { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -67,15 +65,15 @@ video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .glow-orb--2 { width: 600px; height: 600px; background: radial-gradient(circle,#A304E8,transparent 60%); bottom: 10%; right: -10%; animation-delay: -5s; }
 @keyframes orbDrift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,30px) scale(1.1); } }
 
-/* â”€â”€ SECTIONS â”€â”€ */
+/* ── SECTIONS ── */
 section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relative; z-index: 1; overflow: hidden; }
 .section-bg-1 { background: var(--bg-deep); }
 .section-bg-2 { background: var(--bg-dark); }
 .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg,transparent,rgba(181,26,255,0.3),transparent); position: absolute; top: 0; left: 0; }
 
-/* â”€â”€ SECTION HEADINGS â”€â”€
+/* ── SECTION HEADINGS ──
    All main headings: Bebas Neue, large, white, tracked
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ─────────────────────────────────────────────────── */
 .section-header { margin-bottom: 3rem; position: relative; display: inline-block; }
 .center-header { text-align: center; display: block; }
 .center-header .section-title { display: inline-block; }
@@ -83,7 +81,7 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
 .section-title {
   font-family: var(--f-display);
   font-size: clamp(2.25rem, 5vw, 4rem);
-  font-weight: 400;        /* Bebas Neue has no real weight â€” 400 renders correctly */
+  font-weight: 400;        /* Bebas Neue has no real weight — 400 renders correctly */
   letter-spacing: 0.05em;
   color: var(--text);
   position: relative;
@@ -109,7 +107,7 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
   line-height: 1.6;
 }
 
-/* â”€â”€ ANIMATIONS â”€â”€ */
+/* ── ANIMATIONS ── */
 .slide-in-left { opacity: 0; transform: translateX(-50px); transition: opacity 1s var(--ease), transform 1s var(--ease); will-change: transform,opacity; }
 .slide-in-left.visible { opacity: 1; transform: translateX(0); }
 .reveal-up { opacity: 0; transform: translateY(50px); transition: opacity 1s var(--ease), transform 1s var(--ease); will-change: transform,opacity; }
@@ -119,9 +117,9 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
 .lando-entrance-delay-2{ opacity: 0; transform: translateY(20px); animation: landoUp .8s ease-out forwards .2s; will-change: transform,opacity; }
 @keyframes landoUp { to { opacity:1; transform:translateY(0); } }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    NAVIGATION
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 #navbar { position: fixed; inset: 0 0 auto 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem,5vw,6rem); height: var(--nav-h); transition: background .3s, backdrop-filter .3s; }
 #navbar.scrolled { background: rgba(18,1,28,0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(181,26,255,0.1); }
 
@@ -165,12 +163,12 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
   .nav-links a { font-size: 16px; padding: 1rem 0; width: 100%; display: block; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    HERO
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-#hero { height: 100svh; display: flex; align-items: center; justify-content: center; padding: 0; position: relative; overflow: hidden; }
+   ───────────────────────────────────────────────────── */
+#hero { height: 100svh; display: flex; align-items: center; justify-content: center; padding: 0; }
 .hero-video-wrap, .hero-overlay { position: absolute; inset: 0; z-index: 0; }
-.hero-overlay { background: linear-gradient(to bottom, rgba(18,1,28,.2), rgba(18,1,28,.65)); pointer-events: none; }
+.hero-overlay { background: linear-gradient(to bottom, rgba(18,1,28,.5), rgba(18,1,28,.95)); }
 .hero-content { position: relative; z-index: 1; text-align: center; padding: 0 1rem; width: 100%; }
 
 /* Name: Bebas Neue, giant, white */
@@ -196,13 +194,13 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
   color: rgba(255,255,255,0.6);
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    ABOUT
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(3rem,6vw,6rem); align-items: center; }
 .about-photo-wrap { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; border: 2px solid rgba(181,26,255,0.4); box-shadow: 0 0 40px rgba(139,0,199,0.25); max-width: 420px; }
 
-/* About heading: Bebas Neue 48px â€” handled by .section-title override below */
+/* About heading: Bebas Neue 48px — handled by .section-title override below */
 #about .section-title {
   font-size: 48px;
   letter-spacing: 0.03em;
@@ -222,15 +220,13 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
 
 @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; text-align: center; } .about-photo-wrap { max-width: 320px; margin: 0 auto; } }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    CAROUSEL
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 .gallery-section { padding-bottom: clamp(4rem,8vw,6rem); }
 .carousel-wrapper { position: relative; margin: 0 -1.5rem; padding: 1rem 1.5rem 3rem; }
 @media(min-width:768px){ .carousel-wrapper { margin: 0 -2rem; padding: 1rem 2rem 3rem; } }
-.carousel-container { display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; gap: 20px; padding: 20px 0; scrollbar-width: none; -ms-overflow-style: none; cursor: default; }
-.carousel-container::-webkit-scrollbar { display: none; }
-.gallery-card { scroll-snap-align: start; flex-shrink: 0; }
+.carousel-container { display: flex; gap: 2rem; overflow-x: scroll; padding: 2rem 0; align-items: center; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
 .carousel-container::-webkit-scrollbar { display: none; }
 
 .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: rgba(18,1,28,.8); border: 1px solid rgba(181,26,255,.4); color: #fff; display: flex; align-items: center; justify-content: center; transition: all .3s; backdrop-filter: blur(5px); pointer-events: auto; }
@@ -238,7 +234,7 @@ section { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,6rem); position: relat
 .arrow-prev { left: .5rem; } .arrow-next { right: .5rem; }
 @media (max-width:768px){ .carousel-arrow { display: none !important; } }
 
-/* â”€â”€ CARDS â”€â”€ */
+/* ── CARDS ── */
 .card-hover-fx { -webkit-transform: translateZ(0); transform: translateZ(0); will-change: transform; backface-visibility: hidden;  position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(181,26,255,.1); background: var(--bg-dark); transition: transform .4s ease, border-color .3s, box-shadow .3s, opacity .4s; flex: 0 0 auto; scroll-snap-align: start; opacity: .6; transform: scale(.9); will-change: transform,opacity; }
 .card-hover-fx:hover, .card-hover-fx.focused { opacity: 1; transform: scale(1) translateY(-6px); border-color: rgba(181,26,255,.5); box-shadow: 0 15px 35px rgba(139,0,199,.25); }
 .video-card  { width: clamp(280px,75vw,650px); aspect-ratio: 16/10; }
@@ -336,9 +332,9 @@ a.design-card-overlay { text-decoration: none; pointer-events: auto; }
 }
 .neon-btn:hover { background: var(--accent); box-shadow: 0 0 30px var(--accent); transform: translateY(-3px); }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    SERVICES (2 cards)
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 /* Heading handled by .section-title (Bebas Neue, no custom-font override needed) */
 .services-grid.services-2-col { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; max-width: 820px; margin: 0 auto; }
 @media (max-width:768px) { .services-grid.services-2-col { grid-template-columns: 1fr; } }
@@ -364,9 +360,9 @@ a.design-card-overlay { text-decoration: none; pointer-events: auto; }
   line-height: 1.7;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    SKILL PROOF GRID
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 .skill-proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
 @media (max-width:1024px){ .skill-proof-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width:600px) { .skill-proof-grid { grid-template-columns: 1fr; } }
@@ -414,9 +410,9 @@ a.proof-card:hover { border-color: var(--accent); background: rgba(58,1,85,.5); 
   line-height: 1.6;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    CONTACT CARDS
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 .contact-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
 @media (max-width:900px) { .contact-cards { grid-template-columns: repeat(2,1fr); } }
 @media (max-width:500px) { .contact-cards { grid-template-columns: 1fr; } }
@@ -448,9 +444,9 @@ a.proof-card:hover { border-color: var(--accent); background: rgba(58,1,85,.5); 
   color: rgba(255,255,255,0.5);
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────
    FOOTER
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ───────────────────────────────────────────────────── */
 #footer { padding: 3rem 1.5rem; text-align: center; border-top: 1px solid rgba(181,26,255,.1); background: var(--bg-deep); }
 /* Copyright: Inter 12px 400 */
 .footer-copy {
@@ -460,7 +456,7 @@ a.proof-card:hover { border-color: var(--accent); background: rgba(58,1,85,.5); 
   color: rgba(255,255,255,0.4);
 }
 
-/* â”€â”€ REDUCED MOTION â”€â”€ */
+/* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
@@ -472,157 +468,6 @@ a.proof-card:hover { border-color: var(--accent); background: rgba(58,1,85,.5); 
 
 
 @media (max-width: 768px) { * { animation-duration: 0.1ms !important; transition-duration: 0.3s !important; } }
-a, a:hover { text-decoration: none !important; }
-
-.cv-btns-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-@media (max-width: 768px) { .cv-btns-row { justify-content: center; } }
-.cv-btn-view {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--accent); color: #fff !important;
-  font-family: var(--f-body); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.7rem 1.5rem; border-radius: 30px;
-  text-decoration: none !important; transition: all .3s;
-  box-shadow: 0 0 15px rgba(181,26,255,.3);
-}
-.cv-btn-view:hover { opacity: 0.85; transform: translateY(-2px); }
-.cv-btn-download {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: transparent; color: #fff !important;
-  font-family: var(--f-body); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.7rem 1.5rem; border-radius: 30px;
-  border: 1px solid var(--accent);
-  text-decoration: none !important; transition: all .3s;
-}
-.cv-btn-download:hover { background: var(--accent); transform: translateY(-2px); }
-.cv-proof-card {
-  background: rgba(26,1,40,0.6); border: 1px solid rgba(181,26,255,0.25);
-  border-radius: 16px; padding: 2rem; display: flex;
-  align-items: center; justify-content: space-between;
-  gap: 1.5rem; transition: border-color 0.3s, box-shadow 0.3s; flex-wrap: wrap; margin-top: 2rem;
-}
-.cv-proof-card:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(181,26,255,0.15); }
-.cv-proof-left { display: flex; align-items: center; gap: 1rem; }
-.cv-proof-icon { width: 48px; height: 48px; background: rgba(181,26,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
-.cv-proof-title { font-family: var(--f-body); font-size: 16px; font-weight: 600; color: #fff; margin: 0 0 0.2rem; }
-.cv-proof-sub { font-family: var(--f-body); font-size: 12px; color: rgba(255,255,255,0.5); margin: 0; }
-.cv-proof-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
-
-/* Remove ALL underlines */
-a, a:hover, a:visited, a:active { text-decoration: none !important; }
-
-@media (max-width: 768px) {
-  #hero video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-}
-/* =====================================================
-   MOBILE OPTIMIZATIONS (Smartphones & Tablets)
-   ===================================================== */
-@media (max-width: 768px) {
-  /* Prevent horizontal cutoffs & improve section breathing room */
-  section {
-    padding: 3.5rem 1rem !important;
-  }
-
-  /* Hero headline and tagline scaling for small screens */
-  .hero-name {
-    font-size: clamp(38px, 11vw, 56px) !important;
-    letter-spacing: 0.03em !important;
-  }
-  .hero-tagline {
-    font-size: 11px !important;
-    letter-spacing: 0.22em !important;
-    padding: 0 0.5rem;
-  }
-  .hero-divider {
-    width: 60px !important;
-    margin: 1rem auto !important;
-  }
-
-  /* Video & Design Carousel touch optimization */
-  .carousel-container {
-    gap: 1rem !important;
-    padding: 1rem 0.5rem 1.5rem !important;
-    -webkit-overflow-scrolling: touch !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-padding: 0 1rem;
-  }
-  .video-card {
-    width: 82vw !important;
-    max-width: 320px !important;
-    scroll-snap-align: center !important;
-  }
-  .design-card {
-    width: 72vw !important;
-    max-width: 270px !important;
-    scroll-snap-align: center !important;
-  }
-
-  /* Make design card details visible without hover on touch screens */
-  .design-card-overlay {
-    opacity: 1 !important;
-    background: linear-gradient(to top, rgba(18,1,28,0.92) 0%, rgba(18,1,28,0.4) 60%, transparent 100%) !important;
-  }
-  .design-card-overlay h3,
-  .design-card-overlay p {
-    transform: translateY(0) !important;
-  }
-
-  /* Service cards touch spacing */
-  .service-card {
-    padding: 1.8rem 1.2rem !important;
-  }
-
-  /* CV Proof card column layout on phones */
-  .cv-proof-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 1.5rem !important;
-  }
-  .cv-proof-btns {
-    width: 100% !important;
-    justify-content: flex-start !important;
-  }
-  .cv-btn-view, .cv-btn-download {
-    flex: 1 1 auto !important;
-    text-align: center !important;
-    justify-content: center !important;
-  }
-
-  /* Larger touch targets for mobile menu */
-  .nav-links a {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Smaller phones */
-  .hero-name {
-    font-size: 36px !important;
-  }
-  .cta-wrap {
-    margin-top: 1.5rem !important;
-  }
-  .neon-btn {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: 0.85rem 1.2rem !important;
-  }
-  .contact-cards {
-    grid-template-columns: 1fr !important;
-  }
-}
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -641,7 +486,7 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
   <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
   <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• NAV â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ NAV ═══════════ -->
   <nav id="navbar">
     <!-- Logo: image with SA text fallback -->
     <a href="#hero" class="nav-logo" id="nav-logo-link">
@@ -662,32 +507,22 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     </ul>
   </nav>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ HERO ═══════════ -->
   <section id="hero">
     <div class="hero-video-wrap">
-      <!-- Hero background video: autoplay, muted, loops forever, no controls -->
-      <video
-        id="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        poster="assets/images/hero-poster.jpg"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;">
-        <source src="assets/videos/hero-reel.mp4" type="video/mp4">
+      <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/proj-1.jpg">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4"/>
       </video>
       <div class="hero-overlay"></div>
     </div>
-    <div class="hero-content" style="position: relative; z-index: 1;">
+    <div class="hero-content">
       <h1 class="hero-name lando-entrance">SABBIR ADNAN</h1>
       <div class="hero-divider lando-entrance-delay"></div>
       <p class="hero-tagline lando-entrance-delay-2">TELLING STORIES THROUGH EVERY FRAME</p>
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• ABOUT â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ ABOUT ═══════════ -->
   <section id="about" class="section-bg-2">
     <div class="about-grid">
       <div class="about-photo-wrap reveal-up">
@@ -696,23 +531,13 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
       </div>
       <div class="about-text reveal-up">
         <h2 class="section-title">About Me<span class="draw-line"></span></h2>
-        <!-- EDIT BIO TEXT IN config.js â†’ bio field -->
+        <!-- EDIT BIO TEXT IN config.js → bio field -->
         <p class="about-bio" id="about-bio">Hi, I'm <strong>Sabbir Adnan</strong>, a Professional Video Editor and Graphic Designer.</p>
-      <div class="cv-btns-row">
-        <a href="assets/images/my-cv.pdf.pdf" target="_blank" rel="noopener" class="cv-btn-view">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          View CV
-        </a>
-        <a href="assets/images/my-cv.pdf.pdf" download="Sabbir-Adnan-CV.pdf" class="cv-btn-download">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV
-        </a>
-      </div>
       </div>
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• VIDEO EDITING â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ VIDEO EDITING ═══════════ -->
   <section id="video-section" class="gallery-section section-bg-1">
     <div class="section-header">
       <h2 class="section-title slide-in-left">VIDEO EDITING
@@ -736,7 +561,7 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• GRAPHIC DESIGN â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ GRAPHIC DESIGN ═══════════ -->
   <section id="design-section" class="gallery-section section-bg-2">
     <div class="section-divider"></div>
     <div class="section-header">
@@ -761,7 +586,7 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• SERVICES (2 only) â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ SERVICES (2 only) ═══════════ -->
   <section id="services" class="section-bg-1">
     <div class="section-header">
       <h2 class="section-title slide-in-left">What I Offer
@@ -771,35 +596,20 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     <div class="services-wrapper reveal-up">
       <div class="services-grid services-2-col">
         <div class="service-card">
-          <div class="service-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B51AFF" stroke-width="1.5">
-<rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
-<line x1="7" y1="2" x2="7" y2="22"/>
-<line x1="17" y1="2" x2="17" y2="22"/>
-<line x1="2" y1="12" x2="22" y2="12"/>
-<line x1="2" y1="7" x2="7" y2="7"/>
-<line x1="2" y1="17" x2="7" y2="17"/>
-<line x1="17" y1="7" x2="22" y2="7"/>
-<line x1="17" y1="17" x2="22" y2="17"/>
-</svg></div>
+          <div class="service-icon">🎬</div>
           <h3 class="service-name">Video Editing</h3>
           <p class="service-desc">From raw footage to cinematic sequences — motion, storytelling, reels and more.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B51AFF" stroke-width="1.5">
-<circle cx="13.5" cy="6.5" r=".5"/>
-<circle cx="17.5" cy="10.5" r=".5"/>
-<circle cx="8.5" cy="7.5" r=".5"/>
-<circle cx="6.5" cy="12.5" r=".5"/>
-<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
-</svg></div>
+          <div class="service-icon">🎨</div>
           <h3 class="service-name">Graphic Design</h3>
           <p class="service-desc">Posters, thumbnails, calligraphy and social media visuals that stand out.</p>
         </div>
-      </div></div>
+      </div>
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• SKILL PROOF â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ SKILL PROOF ═══════════ -->
   <section id="skill-proof" class="section-bg-2">
     <div class="section-header center-header">
       <h2 class="section-title slide-in-left">Skill Proof & Channel Links
@@ -811,7 +621,7 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     <div class="skill-proof-grid reveal-up" id="skill-grid"></div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• CONTACT â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ CONTACT ═══════════ -->
   <section id="contact" class="section-bg-1">
     <div class="contact-glow" aria-hidden="true"></div>
     <div class="section-header center-header">
@@ -824,7 +634,7 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
     <div class="contact-cards reveal-up" id="contact-grid"></div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- ═══════════ FOOTER ═══════════ -->
   <footer id="footer">
     <div class="footer-inner">
       <p class="footer-copy">&copy; <span id="year"></span> Sabbir Adnan. All rights reserved.</p>
@@ -833,19 +643,19 @@ a, a:hover, a:visited, a:active { text-decoration: none !important; }
 
   <script>
 // =====================================================================
-// SABBIR ADNAN Ã¢â‚¬â€ PORTFOLIO CONFIGURATION
+// SABBIR ADNAN â€” PORTFOLIO CONFIGURATION
 // Edit all site content here. No need to touch index.html or main.js
 // =====================================================================
 
 const PORTFOLIO_CONFIG = {
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ PERSONAL Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ PERSONAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     name:       "Sabbir Adnan",
     tagline:    "Telling Stories Through Every Frame",
-    logoPath:   "assets/images/logo.png",   // Ã¢â€ Â swap logo image here
-    photoPath:  "assets/images/about-photo.jpg", // Ã¢â€ Â swap photo here
+    logoPath:   "assets/images/logo.png",   // â† swap logo image here
+    photoPath:  "assets/images/about-photo.jpg", // â† swap photo here
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ BIO Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ BIO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Edit the bio text freely between the quotes
     bio: `Hi, I'm <strong>Sabbir Adnan</strong>, a Professional Video Editor and Graphic Designer with <strong>1 year of experience</strong> in the creative field. I enjoy transforming ordinary footage into engaging, dynamic, and visually appealing videos that effectively connect with the audience.
 <br/><br/>
@@ -853,91 +663,91 @@ I specialize in creating <strong>Social Media Videos, Reels, Promotional Videos,
 <br/><br/>
 <em>With creativity, a passion for learning, and a commitment to quality, I strive to bring every project to life in a unique and engaging way.</em>`,
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ COLORS & FONTS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ COLORS & FONTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     accentColor:  "#B51AFF",
     fontHeadings: "'Montserrat', sans-serif",
     fontBody:     "'Inter', sans-serif",
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ VIDEO EDITING CAROUSEL Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ VIDEO EDITING CAROUSEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Categories allowed: Motion | Storytelling | Podcast | Social Content | Reels
     videoProjects: [
         {
             category:  "Motion",
-            thumbnail: "assets/images/thumb-1 (4).jpg",
+            thumbnail: "assets/images/proj-1.jpg",
             url:       "https://youtube.com/playlist?list=PLCbN6Yaq5FOM&si=ezBjiJqeeyTOjyYs",
             title:     "Motion Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Storytelling",
-            thumbnail: "assets/images/thumb-1 (1).jpg",
+            thumbnail: "assets/images/proj-2.jpg",
             url:       "https://youtube.com/playlist?list=PLRqr_WiPbrmY&si=3r6ZGQ4enxrU9vvj",
             title:     "Storytelling Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Podcast",
-            thumbnail: "assets/images/thumb-1 (3).jpg",
+            thumbnail: "assets/images/proj-3.jpg",
             url:       "https://youtube.com/playlist?list=PLFtPV0z3edUw&si=_y6sKsXPBR0EXm3q",
             title:     "Podcast Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Social Content",
-            thumbnail: "assets/images/thumb-1 (7).jpg",
+            thumbnail: "assets/images/proj-4.jpg",
             url:       "https://youtube.com/your-link-here",
             title:     "Social Content Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Reels",
-            thumbnail: "assets/images/thumb-1 (2).jpg",
+            thumbnail: "assets/images/proj-5.jpg",
             url:       "https://youtube.com/playlist?list=PLdmGpNZyw04s&si=qrBJIZtS3I6kOPOQ",
             title:     "Reels Project Title",
             subtitle:  "Short description here"
         }
     ],
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ GRAPHIC DESIGN CAROUSEL Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ GRAPHIC DESIGN CAROUSEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Categories allowed: Poster | Calligraphy | Thumbnail | Social Media
     designProjects: [
         {
             category:  "Poster",
-            thumbnail: "assets/images/thumbnal-1 (1).jpg",
+            thumbnail: "assets/images/proj-1.jpg",
             url:       "https://www.behance.net/gallery/224277165/Portfolio-part-1",
             title:     "Poster Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Calligraphy",
-            thumbnail: "assets/images/thumbnal-1 (3).jpg",
+            thumbnail: "assets/images/proj-2.jpg",
             url:       "https://www.behance.net/gallery/220403237/book-cover-design",
             title:     "Calligraphy Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Thumbnail",
-            thumbnail: "assets/images/thumbnal-1 (2).jpg",
+            thumbnail: "assets/images/proj-3.jpg",
             url:       "https://www.behance.net/gallery/254889965/Thumnell-Design",
             title:     "Thumbnail Project Title",
             subtitle:  "Short description here"
         },
         {
             category:  "Social Media",
-            thumbnail: "assets/images/thumbnal-1 (4).jpg",
+            thumbnail: "assets/images/proj-4.jpg",
             url:       "https://www.behance.net/gallery/254106451/Marketing-Ad-Design",
             title:     "Social Media Project Title",
             subtitle:  "Short description here"
         }
     ],
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ SKILL PROOF LINKS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ SKILL PROOF LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     skillLinks: [
         {
             platform: "YouTube",
             subtitle:  "Video Editing Proof",
             desc:      "Video editing projects, visual cuts, sequence pacing, and video tutorials.",
-            // ADD GOOGLE DRIVE LINK HERE Ã¢â‚¬â€ change url from "#" to your link
+            // ADD GOOGLE DRIVE LINK HERE â€” change url from "#" to your link
             url:       "https://youtube.com/@sabbiradnan-ym7xw",
             linked:    true,
             icon:      "yt"
@@ -962,7 +772,7 @@ I specialize in creating <strong>Social Media Videos, Reels, Promotional Videos,
             platform: "Google Drive",
             subtitle:  "Source Files & Vault",
             desc:      "Direct link to raw video render samples, PSD/AI design sources, work archives.",
-            // ADD GOOGLE DRIVE LINK HERE Ã¢â€ â€œ
+            // ADD GOOGLE DRIVE LINK HERE â†“
             url:       "https://drive.google.com/drive/folders/1vd-D6bXq5uHa2B6Qitih_k1wTD-a9QVS?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto",
             linked:    true,
             icon:      "gd"
@@ -977,7 +787,7 @@ I specialize in creating <strong>Social Media Videos, Reels, Promotional Videos,
         }
     ],
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ CONTACT LINKS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // â”€â”€â”€ CONTACT LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     contactLinks: [
         { label: "Email",     hint: "Drop me an email",    url: "mailto:sabbiradnan@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Sabbir%20Adnan&body=Hi%20Sabbir%2C%20I%27d%20like%20to%20work%20with%20you.", icon: "email" },
         { label: "Instagram", hint: "Follow my journey",   url: "https://www.instagram.com/sabbiradnan39120/?hl=en", icon: "ig" },
@@ -992,26 +802,26 @@ window.PORTFOLIO_CONFIG = PORTFOLIO_CONFIG;
 </script>
   <script>
 // =====================================================================
-// MAIN.JS â€” Sabbir Adnan Portfolio (fully config-driven)
+// MAIN.JS — Sabbir Adnan Portfolio (fully config-driven)
 // =====================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const C = window.PORTFOLIO_CONFIG;
     if (!C) return;
 
-    // â”€â”€ CSS Vars â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── CSS Vars ─────────────────────────────────────────────────────
     document.documentElement.style.setProperty('--accent', C.accentColor);
 
-    // â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Hero ─────────────────────────────────────────────────────────
     const qS = (s) => document.querySelector(s);
     if (qS('.hero-name'))    qS('.hero-name').textContent    = C.name;
     if (qS('.hero-tagline')) qS('.hero-tagline').textContent = C.tagline;
 
-    // â”€â”€ Bio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Bio ──────────────────────────────────────────────────────────
     const bioEl = document.getElementById('about-bio');
     if (bioEl && C.bio) bioEl.innerHTML = C.bio;
 
-    // â”€â”€ Protection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Protection ──────────────────────────────────────────────────
     document.addEventListener('contextmenu', e => {
         if (['IMG','VIDEO'].includes(e.target.tagName)) e.preventDefault();
     });
@@ -1019,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.tagName === 'IMG') e.preventDefault();
     });
 
-    // â”€â”€ Mobile Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Mobile Nav ───────────────────────────────────────────────────
     const navToggle = qS('.nav-toggle');
     const navLinks  = qS('.nav-links');
     if (navToggle && navLinks) {
@@ -1035,7 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // â”€â”€ Custom Cursor (mouse devices only) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Custom Cursor (mouse devices only) ───────────────────────────
     const dot     = qS('.cursor-dot');
     const outline = qS('.cursor-outline');
     if (dot && outline && window.matchMedia('(pointer:fine)').matches) {
@@ -1056,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })();
     }
 
-    // â”€â”€ Icon SVG helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Icon SVG helpers ─────────────────────────────────────────────
     const SVGS = {
         yt:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/></svg>`,
         be:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>`,
@@ -1068,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wa:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`
     };
 
-    // â”€â”€ Video Carousel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Video Carousel ───────────────────────────────────────────────
     const videoCarousel = document.getElementById('video-carousel');
     if (videoCarousel && C.videoProjects) {
         C.videoProjects.forEach(p => {
@@ -1083,14 +893,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 class="card-bottom-title">${p.title}</h3>
                     <p class="card-bottom-desc">${p.subtitle}</p>
                 </div>`;
-            // Clicking card â†’ opens URL
+            // Clicking card → opens URL
             card.addEventListener('click', () => window.open(p.url, '_blank', 'noopener'));
             card.style.cursor = 'pointer';
             videoCarousel.appendChild(card);
         });
     }
 
-    // â”€â”€ Design Carousel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Design Carousel ──────────────────────────────────────────────
     const designCarousel = document.getElementById('design-carousel');
     if (designCarousel && C.designProjects) {
         C.designProjects.forEach(p => {
@@ -1110,7 +920,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // â”€â”€ Skill Proof Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Skill Proof Grid ─────────────────────────────────────────────
     const skillGrid = document.getElementById('skill-grid');
     if (skillGrid && C.skillLinks) {
         C.skillLinks.forEach(s => {
@@ -1130,7 +940,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // â”€â”€ Contact Cards Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Contact Cards Grid ───────────────────────────────────────────
     const contactGrid = document.getElementById('contact-grid');
     if (contactGrid && C.contactLinks) {
         C.contactLinks.forEach(c => {
@@ -1148,7 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // â”€â”€ Carousel (Drag + Touch + Momentum + Center Focus) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Carousel (Drag + Touch + Momentum + Center Focus) ────────────
     function initCarousel(wrapper) {
         const container = wrapper.querySelector('.carousel-container');
         if (!container) return;
@@ -1183,7 +993,38 @@ document.addEventListener('DOMContentLoaded', () => {
         container.addEventListener('scroll', () => { clearTimeout(ft); ft = setTimeout(focus, 60); }, {passive:true});
         setTimeout(focus, 600);
 
-        // Native CSS scroll is used instead of JS dragging
+        // Mouse drag
+        container.addEventListener('mousedown', e => {
+            if (e.target.closest('a,button')) return;
+            isDown = true;
+            document.body.classList.add('cursor-hover');
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+            cancelAnimationFrame(mid);
+        });
+        window.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+            document.body.classList.remove('cursor-hover');
+            momentum();
+        });
+        container.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const dx = (e.pageX - container.offsetLeft - startX) * 1.5;
+            const prev = container.scrollLeft;
+            container.scrollLeft = scrollLeft - dx;
+            velX = container.scrollLeft - prev;
+            focus();
+        });
+
+        // Native touch scroll is used for mobile (hardware accelerated)
+
+        // Wheel
+        container.addEventListener('wheel', e => {
+            if (e.deltaY && Math.abs(e.deltaX) < 10) { e.preventDefault(); container.scrollLeft += e.deltaY * 1.5; }
+        }, {passive:false});
+
         function momentum() {
             container.scrollLeft += velX;
             velX *= 0.92;
@@ -1193,65 +1034,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.querySelectorAll('.carousel-wrapper').forEach(initCarousel);
 
-    // â”€â”€ Nav scroll effect â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Nav scroll effect ─────────────────────────────────────────────
     const navbar = document.getElementById('navbar');
     if (navbar) window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 30), {passive:true});
 
-    // â”€â”€ IntersectionObserver for all animations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── IntersectionObserver for all animations ───────────────────────
     const io = new IntersectionObserver((entries, obs) => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal-up,.slide-in-left').forEach(el => io.observe(el));
 
-    // â”€â”€ Footer year â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Footer year ───────────────────────────────────────────────────
     const yr = document.getElementById('year');
     if (yr) yr.textContent = new Date().getFullYear();
 });
 
 </script>
-
-
-<script>
-/* ── Hero Video Autoplay: works on Chrome, Safari, iOS, Android ── */
-(function () {
-  var v = document.getElementById('hero-video');
-  if (!v) return;
-
-  // Force all required properties via JS (belt AND suspenders)
-  v.muted    = true;
-  v.loop     = true;
-  v.autoplay = true;
-  v.setAttribute('playsinline', '');
-  v.setAttribute('webkit-playsinline', '');
-
-  function tryPlay() {
-    v.muted = true;               // must set again — iOS resets it
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {}); // silence AbortError
-  }
-
-  // Fire immediately if DOM is ready, else wait
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryPlay);
-  } else {
-    tryPlay();
-  }
-
-  // Belt-and-suspenders: also fire on window load
-  window.addEventListener('load', tryPlay, { once: true });
-
-  // iOS Safari & some Androids only allow play() after user touch/click
-  ['touchstart', 'touchend', 'click', 'scroll'].forEach(function (evt) {
-    document.addEventListener(evt, function handler() {
-      tryPlay();
-      document.removeEventListener(evt, handler);
-    }, { once: true, passive: true });
-  });
-})();
-</script>
 </body>
 </html>
-
 
 
 
